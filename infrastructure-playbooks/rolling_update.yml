@@ -256,7 +256,7 @@
         name: ceph-facts
 
     - name: non container - get current fsid
-      command: "ceph --cluster {{ cluster }} fsid"
+      command: "ceph --cluster {{ cluster }} fsid"
       register: cluster_uuid_non_container
       delegate_to: "{{ groups[mon_group_name][0] }}"
       when:
@@ -264,7 +264,7 @@
 
     - name: container - get current fsid
       command: >
-        {{ container_binary }} exec ceph-mon-{{ hostvars[groups[mon_group_name][0]]['ansible_hostname'] }} ceph --cluster {{ cluster }} fsid
+        {{ container_binary }} exec ceph-mon-{{ hostvars[groups[mon_group_name][0]]['ansible_hostname'] }} ceph --cluster {{ cluster }} fsid
       register: cluster_uuid_container
       delegate_to: "{{ groups[mon_group_name][0] }}"
       when:
